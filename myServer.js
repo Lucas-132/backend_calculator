@@ -1,5 +1,6 @@
 const fs = require('fs');
 const http = require('http');
+import {calculate} from './calculate.js';
 
 const server = http.createServer((request, response) => {
     console.log("request successful");
@@ -9,7 +10,11 @@ const server = http.createServer((request, response) => {
     if (request.url === "/"){
         filePath = "./html/index.html";
     } else if (request.url === "/result"){
+
         filePath = "./html/result.html";
+        let myData = request.POST;
+        console.log(myData);
+
     } else {
         filePath = "./html/error.html";
     }
